@@ -7,7 +7,7 @@ test('create an answer',() =>{
 
   const {answer} = answerQuestion.execute({
     questionId:'2',
-    instructorId:'2',
+    authorId:'2',
     content:'resposta'
   })
 
