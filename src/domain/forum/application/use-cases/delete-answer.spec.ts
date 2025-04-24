@@ -2,6 +2,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { DeleteAnswerUseCase } from './delete-answer'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
 import { makeAnswer } from 'test/factories/make-answer'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let deleteAnswer: DeleteAnswerUseCase
@@ -39,11 +40,12 @@ describe('Delete Answer Use Case', () => {
 
     await inMemoryAnswerRepository.create(newQuestion)
 
-    await expect(() =>
-      deleteAnswer.execute({
-        answerId: 'answer-1',
-        authorId: 'authorId-2',
-      }),
-    ).rejects.toBeInstanceOf(Error)
+    const result = await deleteAnswer.execute({
+      answerId: 'answer-1',
+      authorId: 'authorId-2',
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
   })
 })

@@ -33,12 +33,12 @@ describe('Fetch Questions Answers Use Case', () => {
       }),
     )
 
-    const { answers } = await fetchRecentQuestionsUseCase.execute({
+    const result = await fetchRecentQuestionsUseCase.execute({
       page: 1,
       questionId: 'question-1',
     })
 
-    expect(answers).toHaveLength(3)
+    expect(result.value?.answers).toHaveLength(3)
   })
   it('should be able to fetch paginated questions answers', async () => {
     for (let i = 1; i <= 22; i++) {
@@ -49,11 +49,11 @@ describe('Fetch Questions Answers Use Case', () => {
       )
     }
 
-    const { answers } = await fetchRecentQuestionsUseCase.execute({
+    const result = await fetchRecentQuestionsUseCase.execute({
       page: 2,
       questionId: 'question-1',
     })
 
-    expect(answers).toHaveLength(2)
+    expect(result.value?.answers).toHaveLength(2)
   })
 })

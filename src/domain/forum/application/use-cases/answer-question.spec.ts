@@ -11,12 +11,13 @@ describe('Create Answer Use Case', () => {
   })
 
   it('should be able to create a answer questions', async () => {
-    const { answer } = await answerQuestions.execute({
+    const result = await answerQuestions.execute({
       questionId: '2',
       authorId: '2',
       content: 'resposta',
     })
 
-    expect(answer.content).toEqual('resposta')
+    expect(result.isRight()).toBe(true)
+    expect(inMemoryAnswerRepository.items[0]).toEqual(result.value?.answer)
   })
 })

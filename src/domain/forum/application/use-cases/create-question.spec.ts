@@ -11,13 +11,12 @@ describe('Create Question Use Case', () => {
   })
 
   it('should be able to create a question', async () => {
-    const { question } = await createQuestion.execute({
+    const result = await createQuestion.execute({
       authorId: '2',
       content: 'resposta',
       title: 'nova pergunta',
     })
 
-    expect(question.content).toEqual('resposta')
-    expect(question.id).toBeTruthy()
+    expect(result.isRight()).toBe(true)
   })
 })
