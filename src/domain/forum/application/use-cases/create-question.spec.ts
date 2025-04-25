@@ -20,7 +20,9 @@ describe('Create Question Use Case', () => {
     })
 
     expect(result.isRight()).toBe(true)
-    expect(inMemoryQuestionsRepository.items[0].attachments).toEqual([
+    expect(
+      inMemoryQuestionsRepository.items[0].attachments.currentItems,
+    ).toEqual([
       expect.objectContaining({ attachmentId: new UniqueEntityID('1') }),
       expect.objectContaining({ attachmentId: new UniqueEntityID('2') }),
     ])
