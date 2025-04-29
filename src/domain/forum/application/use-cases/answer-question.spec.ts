@@ -4,7 +4,6 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { InMemoryAnswerAttachmentRepository } from 'test/repositories/in-memory-answer-attachment-repository'
 
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentRepository
-
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let answerQuestions: AnswerQuestionUseCase
 
