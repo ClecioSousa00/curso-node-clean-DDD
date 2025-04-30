@@ -1,7 +1,5 @@
 import { makeNotification } from 'test/factories/make-notification'
-import { Notification } from '../../enterprise/entities/notification'
 import { ReadNotificationUseCase } from './read-notification'
-import { SendNotificationUseCase } from './send-notification'
 import { InMemoryNotificationsRepository } from 'test/repositories/in-memory-notifications-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
